@@ -1,9 +1,11 @@
+import BookCard from "@/components/ui/BookCard";
+
 type BookPageProps = {};
 
 const BookPage = ({}: BookPageProps) => {
   return (
     <>
-      <div>Book Page</div>
+      <BookCard />
     </>
   );
 };
