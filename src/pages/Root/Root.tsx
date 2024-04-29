@@ -5,10 +5,10 @@ type RootProps = {};
 
 const Root = ({}: RootProps) => {
   return (
-    <>
+    <main className="h-screen">
       <Outlet />
       <Navbar />
-    </>
+    </main>
   );
 };
 

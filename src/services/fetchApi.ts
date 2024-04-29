@@ -1,8 +1,9 @@
-export const fetchApi  = async () => {
-    const testUrl = "https://openlibrary.org/search.json?q=&limit=2";
+export const fetchApi  = async (url:string) => {
+    const BASE_URL = "https://openlibrary.org/search.json?q="
+    const fetchUrl =  `${BASE_URL}${url}`;
     try {
 
-        const response = await fetch(testUrl);
+        const response = await fetch(fetchUrl);
 
         if(!response.ok){
             throw new Error("Failed to fetch API");
