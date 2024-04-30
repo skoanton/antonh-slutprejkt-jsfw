@@ -26,7 +26,7 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   console.log(searchResults);
 
   return (
-    <main className="grid grid-cols-1">
+    <main className="grid grid-cols-1 gap-2 mx-2">
       {searchResults &&
         searchResults.map((result) => {
           return <BookCard key={result.key} searchresult={result} />;

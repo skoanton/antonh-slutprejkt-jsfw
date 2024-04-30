@@ -9,6 +9,7 @@ import {
 import { Button } from "./button";
 import { Heart } from "lucide-react";
 import { TitleSearchResult } from "@/types/searchTypes";
+import { Link } from "react-router-dom";
 
 type BookCardProps = {
   searchresult: TitleSearchResult;
@@ -24,26 +25,30 @@ const BookCard = ({ searchresult }: BookCardProps) => {
     imageLink = `https://covers.openlibrary.org/b/olid/${searchresult.edition_key[0]}.jpg`;
   }
 
+  const workId = searchresult.key.split("/works/");
+
   return (
-    <Card className="flex items-center">
-      <CardHeader className="p-2">
-        <img
-          className="w-32 h-32 object-contain"
-          src={imageLink}
-          alt="No picture"
-        />
-      </CardHeader>
-      <CardContent className="flex-grow p-2">
-        <CardTitle>{searchresult.title}</CardTitle>
-        <CardDescription>{searchresult.author_name}</CardDescription>
-        <CardDescription>{searchresult.first_publish_year}</CardDescription>
-      </CardContent>
-      <CardFooter className="p-0">
-        <Button className="bg-transparent">
-          <Heart className="text-primary w-10 h-10" />
-        </Button>
-      </CardFooter>
-    </Card>
+    <Link to={`/book/${workId[1]}`}>
+      <Card className="flex items-center">
+        <CardHeader className="p-2">
+          <img
+            className="w-32 h-32 object-contain"
+            src={imageLink}
+            alt="No picture"
+          />
+        </CardHeader>
+        <CardContent className="flex-grow p-2">
+          <CardTitle>{searchresult.title}</CardTitle>
+          <CardDescription>{searchresult.author_name}</CardDescription>
+          <CardDescription>{searchresult.first_publish_year}</CardDescription>
+        </CardContent>
+        <CardFooter className="p-0">
+          <Button className="bg-transparent">
+            <Heart className="text-primary w-10 h-10" />
+          </Button>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 };
 
