@@ -10,6 +10,7 @@ import ShelfFavoritesPage from "./pages/Shelf/ShelfFavoritesPage";
 import ShelfReadPage from "./pages/Shelf/ShelfReadPage";
 import ShelfReviewPage from "./pages/Shelf/ShelfReviewPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
+import { fetchApi } from "./services/fetchApi";
 
 const router = createBrowserRouter([
   {
@@ -17,11 +18,11 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: "/home",
+        index: true,
         element: <HomePage />,
       },
       {
-        path: "/search/results",
+        path: "/search/:searchParam",
         element: <SearchResultPage />,
       },
       {

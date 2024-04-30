@@ -1,16 +1,17 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
-import { fetchApi } from "@/services/fetchApi";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 type SearchBarProps = {};
 
 const SearchBar = ({}: SearchBarProps) => {
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate();
+
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e.currentTarget.search.value);
-    fetchApi(e.currentTarget.search.value);
+    console.log("Inside handle search");
+    navigate(`/search/${e.currentTarget.search.value}`);
   };
   return (
     <section className="flex justify-center items-center h-full">
