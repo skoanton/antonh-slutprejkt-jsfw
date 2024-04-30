@@ -1,5 +1,6 @@
+import BookCard from "@/components/ui/BookCard";
 import { useFetch } from "@/hooks/useFetch";
-import { SearchResult } from "@/types/searchTypes";
+import { SearchQueryResult, SearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -8,11 +9,12 @@ type SearchResultPageProps = {};
 const SearchResultPage = ({}: SearchResultPageProps) => {
   const params = useParams<{ searchParam: string }>();
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const fetchedData = useFetch({ url: params.searchParam! });
+  const url = `https://openlibrary.org/search.json?q=${params.searchParam!}`;
+  const fetchedData = useFetch<SearchQueryResult>({ url: url });
 
   useEffect(() => {
-    if (params.searchParam) {
-      setSearchResults(fetchedData);
+    if (fetchedData) {
+      setSearchResults(fetchedData.docs);
     }
   });
 
@@ -20,9 +22,11 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   console.log(searchResults);
 
   return (
-    <>
-      <div>Search Result Page</div>
-    </>
+    <main className="grid grid-cols-1">
+      {searchResults.map((result) => {
+        return <BookCard key={result.key} searchresult={result} />;
+      })}
+    </main>
   );
 };
 

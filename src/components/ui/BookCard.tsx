@@ -7,23 +7,28 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SearchResult } from "@/types/searchTypes";
+import { Button } from "./button";
+import { Heart } from "lucide-react";
 
 type BookCardProps = {
-  doc: SearchResult;
+  searchresult: SearchResult;
 };
 
-const BookCard = ({}: BookCardProps) => {
+const BookCard = ({ searchresult }: BookCardProps) => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+    <Card className="flex items-center">
+      <CardHeader className="p-2">
+        <img src="src/assets/authur.jpg" alt="" />
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
+      <CardContent className="flex-grow p-2">
+        <CardTitle>{searchresult.title}</CardTitle>
+        <CardDescription>{searchresult.edition_count}</CardDescription>
+        <p>Author: {searchresult.author_name}</p>
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
+      <CardFooter className="p-0">
+        <Button className="bg-transparent">
+          <Heart className="text-primary w-10 h-10" />
+        </Button>
       </CardFooter>
     </Card>
   );

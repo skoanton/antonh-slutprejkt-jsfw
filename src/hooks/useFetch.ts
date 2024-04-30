@@ -2,29 +2,28 @@ import { SearchQueryResult, SearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 
 type useFetchProps = {
-    url : string
+    url: string,
 }
 
-export const useFetch = ({url}:useFetchProps) => {
+export const useFetch = <T> ({url}:useFetchProps) => {
 
-    const [data,setData] = useState<SearchResult[]>([]);
+    const [data,setData] = useState<T>();
     useEffect(() => {
         let ignore = false;
         const fetchApi = async() => {
-            const BASE_URL = "https://openlibrary.org/search.json?q="
-            const fetchUrl =  `${BASE_URL}${url}`;
+
             try {
-                const response = await fetch(fetchUrl);
+                const response = await fetch(url);
                 if(!response.ok){
                     throw new Error("Something went wrong");
                 }
     
-                const data: SearchQueryResult  =  await response.json();
+                const data: T  =  await response.json();
                 
                 if(!ignore){
                     console.log("getting data")
-                    console.log(data.docs);
-                    setData(data.docs);
+                    console.log(data);
+                    setData(data);
                 }
     
             } catch (error) {
