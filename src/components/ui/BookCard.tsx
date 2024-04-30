@@ -6,8 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { SearchResult } from "@/types/searchTypes";
 
-type BookCardProps = {};
+type BookCardProps = {
+  doc: SearchResult;
+};
 
 const BookCard = ({}: BookCardProps) => {
   return (

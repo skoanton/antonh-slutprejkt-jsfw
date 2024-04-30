@@ -1,5 +1,5 @@
 import { useFetch } from "@/hooks/useFetch";
-import { Doc, SearchResult } from "@/types/searchTypes";
+import { SearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -7,7 +7,7 @@ type SearchResultPageProps = {};
 
 const SearchResultPage = ({}: SearchResultPageProps) => {
   const params = useParams<{ searchParam: string }>();
-  const [searchResults, setSearchResults] = useState<Doc[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const fetchedData = useFetch({ url: params.searchParam! });
 
   useEffect(() => {

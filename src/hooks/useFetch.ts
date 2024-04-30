@@ -1,4 +1,4 @@
-import { Doc, SearchResult } from "@/types/searchTypes";
+import { SearchQueryResult, SearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 
 type useFetchProps = {
@@ -7,7 +7,7 @@ type useFetchProps = {
 
 export const useFetch = ({url}:useFetchProps) => {
 
-    const [data,setData] = useState<Doc[]>([]);
+    const [data,setData] = useState<SearchResult[]>([]);
     useEffect(() => {
         let ignore = false;
         const fetchApi = async() => {
@@ -19,7 +19,7 @@ export const useFetch = ({url}:useFetchProps) => {
                     throw new Error("Something went wrong");
                 }
     
-                const data: SearchResult =  await response.json();
+                const data: SearchQueryResult  =  await response.json();
                 
                 if(!ignore){
                     console.log("getting data")
