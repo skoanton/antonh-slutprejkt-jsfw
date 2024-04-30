@@ -1,4 +1,3 @@
-import { SearchQueryResult, SearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 
 type useFetchProps = {

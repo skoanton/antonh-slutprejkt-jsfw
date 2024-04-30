@@ -6,24 +6,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { SearchResult } from "@/types/searchTypes";
 import { Button } from "./button";
 import { Heart } from "lucide-react";
+import { TitleSearchResult } from "@/types/searchTypes";
 
 type BookCardProps = {
-  searchresult: SearchResult;
+  searchresult: TitleSearchResult;
 };
 
 const BookCard = ({ searchresult }: BookCardProps) => {
+  const hasEditionKey =
+    Array.isArray(searchresult.edition_key) &&
+    searchresult.edition_key.length > 0;
+  console.log("book: ", hasEditionKey);
+  let imageLink = "";
+  if (hasEditionKey) {
+    imageLink = `https://covers.openlibrary.org/b/olid/${searchresult.edition_key[0]}.jpg`;
+  }
+
   return (
     <Card className="flex items-center">
       <CardHeader className="p-2">
-        <img src="src/assets/authur.jpg" alt="" />
+        <img
+          className="w-32 h-32 object-contain"
+          src={imageLink}
+          alt="No picture"
+        />
       </CardHeader>
       <CardContent className="flex-grow p-2">
         <CardTitle>{searchresult.title}</CardTitle>
-        <CardDescription>{searchresult.edition_count}</CardDescription>
-        <p>Author: {searchresult.author_name}</p>
+        <CardDescription>{searchresult.author_name}</CardDescription>
+        <CardDescription>{searchresult.first_publish_year}</CardDescription>
       </CardContent>
       <CardFooter className="p-0">
         <Button className="bg-transparent">

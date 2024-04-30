@@ -1,5 +1,4 @@
-import { SearchResult } from "@/types/searchTypes";
-import { redirect } from "react-router-dom";
+
 
 export const fetchApi  = async (url:string) => {
     const BASE_URL = "https://openlibrary.org/search.json?q=hejsan"
