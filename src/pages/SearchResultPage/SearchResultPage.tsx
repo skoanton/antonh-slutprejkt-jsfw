@@ -11,9 +11,9 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   const params = useParams<{ searchParam: string }>();
   const [searchResults, setSearchResults] = useState<TitleSearchResult[]>([]);
   const newParam = params.searchParam?.split(" ").join("+");
-  const url = `https://openlibrary.org/search.json?title=${newParam}`;
+  const url = `search.json?title=${newParam}`;
   const fetchedData = useFetch<TitleSearchQueryResult>({
-    url: url,
+    urlQuery: url,
   });
 
   useEffect(() => {

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
 type useFetchProps = {
-    url: string,
+    urlQuery: string,
 }
 
-export const useFetch = <T> ({url}:useFetchProps) => {
+export const useFetch = <T> ({urlQuery}:useFetchProps) => {
+
+    const BASE_URL = "https://openlibrary.org/"
+    const fetchUrl = `${BASE_URL}${urlQuery}`
 
     const [data,setData] = useState<T>();
     useEffect(() => {
@@ -12,7 +15,7 @@ export const useFetch = <T> ({url}:useFetchProps) => {
         const fetchApi = async() => {
 
             try {
-                const response = await fetch(url);
+                const response = await fetch(fetchUrl);
                 if(!response.ok){
                     throw new Error("Something went wrong");
                 }
@@ -36,7 +39,7 @@ export const useFetch = <T> ({url}:useFetchProps) => {
             ignore = true;
         }
 
-    },[url])
+    },[urlQuery])
 
     return data;
 }
