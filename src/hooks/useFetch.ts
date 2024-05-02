@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 type useFetchProps = {
-    urlQuery: string,
+    urlQuery: string | null,
 }
 
 export const useFetch = <T> ({urlQuery}:useFetchProps) => {
-
-    const BASE_URL = "https://openlibrary.org/"
+    if (!urlQuery) return;
+    const BASE_URL = "https://openlibrary.org"
     const fetchUrl = `${BASE_URL}${urlQuery}`
-
+    console.log("Fetching from",fetchUrl)
     const [data,setData] = useState<T>();
     useEffect(() => {
         let ignore = false;
@@ -24,7 +24,7 @@ export const useFetch = <T> ({urlQuery}:useFetchProps) => {
                 
                 if(!ignore){
                     console.log("getting data")
-                    console.log(data);
+                    
                     setData(data);
                 }
     

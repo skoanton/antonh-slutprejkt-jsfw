@@ -8,11 +8,11 @@ export const fetchApi  = async (url:string) => {
         const response = await fetch(fetchUrl);
 
         if(!response.ok){
-            throw new Error("Failed to fetch API");
+            throw new Error("Failed to fetch API");§
             
         }
         const data = await response.json();
-        console.log(data);
+       
         return data;
 
     } catch (error) {
