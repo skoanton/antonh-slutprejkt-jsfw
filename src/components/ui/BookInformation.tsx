@@ -31,7 +31,7 @@ const BookInformation = ({ currentBook }: BookInformationProps) => {
         </CardHeader>
         <CardContent className="flex-grow p-2">
           <CardTitle>{currentBook.title}</CardTitle>
-          <CardDescription>{currentBook.author_name}</CardDescription>
+          <CardDescription>{currentBook.authors}</CardDescription>
         </CardContent>
         <CardFooter className="p-0">
           <Button className="bg-transparent">
