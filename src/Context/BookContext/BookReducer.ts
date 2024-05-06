@@ -1,5 +1,5 @@
-import { TitleSearchResult } from "@/types/searchTypes";
 import { BookActions } from "./BookContext";
+import { Book } from "@/types/bookType";
 
 export enum BOOK_ACTION  {
     ADD =  "ADD",
@@ -8,23 +8,22 @@ export enum BOOK_ACTION  {
 }
 
 export type BookState = {
-    book: TitleSearchResult | null;
+    book: Book | null;
 }
 
-export const initalBookState: BookState = {
+export const initialBookState: BookState = {
     book: null,
 }
 
-export const BookReducer = (bookState: BookState,action: BookActions, ) : BookState => {
+export const bookReducer = (bookState: BookState,action: BookActions, ) : BookState => {
 
     switch (action.type) {
         case BOOK_ACTION.ADD:
             
-            return bookState;
+        return {...bookState, book: action.payload};
         
         case BOOK_ACTION.REMOVE:
-
-        return bookState;
+            return {...bookState, book: initialBookState.book};
 
         default:
             return bookState;

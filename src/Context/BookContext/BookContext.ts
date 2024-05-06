@@ -1,15 +1,15 @@
 import { createContext } from "react";
-import { BOOK_ACTION, BookState, initalBookState } from "./BookReducer";
-import { TitleSearchResult } from "@/types/searchTypes";
+import { BOOK_ACTION, BookState, initialBookState } from "./BookReducer";
+import { Book } from "@/types/bookType";
 
 export type BookActions =
-  | { type: BOOK_ACTION.ADD; payload: TitleSearchResult }
+  | { type: BOOK_ACTION.ADD; payload: Book }
   | { type: BOOK_ACTION.REMOVE };
 
 export const BookContext = createContext<{
   bookState: BookState;
-  bookReducer: React.Dispatch<BookActions>;
+  bookDispatch: React.Dispatch<BookActions>;
 }>({
-  bookState: initalBookState,
-  bookReducer: () => null,
+  bookState: initialBookState,
+  bookDispatch: () => null,
 });

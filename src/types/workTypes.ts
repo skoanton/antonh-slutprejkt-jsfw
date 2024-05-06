@@ -1,4 +1,4 @@
-export type Work = {
+export type WorkFetch = {
     description:        string;
 
     title:              string;

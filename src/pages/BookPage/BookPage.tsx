@@ -1,9 +1,11 @@
+import BookInformation from "@/components/ui/BookInformation";
+
 type BookPageProps = {};
 
 const BookPage = ({}: BookPageProps) => {
   return (
     <>
-      <div>Book page</div>
+      <BookInformation />
     </>
   );
 };

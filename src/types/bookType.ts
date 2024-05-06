@@ -1,11 +1,15 @@
-export type BookFetch = {
-    title:           string;
-    publish_date:    string;
-    key:             string;
-    number_of_pages: number;
-    isbn_10:         string[];
-    isbn_13:         string[];
-    lccn :           string[];
-    isbn:              string[];
-    oscl_numbers:     string[];
+export type Book = {
+    id: string;
+    title: string;
+    publish_date: string;
+    number_of_pages: number | string;
+    author: Author
+    image: string
+    description: string,
+}
+
+export type Author = {
+    id: string,
+    name: string,
+    image: string,
 }
