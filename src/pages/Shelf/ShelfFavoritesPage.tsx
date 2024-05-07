@@ -1,4 +1,4 @@
-import FavoritedCard from "@/components/ui/FavoritedCard";
+import FavoritedCard from "./components/ShelfCard";
 
 type ShelfFavoritesPageProps = {};
 

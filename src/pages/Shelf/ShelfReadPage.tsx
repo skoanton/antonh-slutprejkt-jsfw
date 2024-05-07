@@ -1,9 +1,11 @@
+import ShelfCard from "./components/ShelfCard";
+
 type ShelfReadPageProps = {};
 
 const ShelfReadPage = ({}: ShelfReadPageProps) => {
   return (
     <>
-      <div>Shelf Read Page</div>
+      <ShelfCard favoritesPage={false} />
     </>
   );
 };
