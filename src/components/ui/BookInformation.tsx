@@ -1,15 +1,17 @@
 import { Heart } from "lucide-react";
 import { Button } from "./button";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "./card";
+
 import { useContext } from "react";
 import { CurrentWatchBookContext } from "@/Context/BookContext/CurrentWatchBookContext";
+import FavoriteButton from "../FavoriteButton";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./card";
 
 type BookInformationProps = {};
 
@@ -17,38 +19,39 @@ const BookInformation = ({}: BookInformationProps) => {
   const { currentWatchBookState } = useContext(CurrentWatchBookContext);
 
   return (
-    <>
+    <main>
       {currentWatchBookState && (
-        <Card className="flex justify-center items-center flex-col overflow-hidden">
-          <CardHeader className="p-2">
-            <img src={currentWatchBookState.book.images.m} alt="No picture" />
-          </CardHeader>
-          <CardContent className="flex items-center ">
-            <CardDescription>
-              Pages: {currentWatchBookState.book?.number_of_pages}
-            </CardDescription>
-            <Button className="bg-transparent">
-              <Heart className="text-primary w-8  h-8" />
-            </Button>
-          </CardContent>
-          <CardContent className="flex flex-col items-center">
+        <Card>
+          <CardHeader className="flex flex-col items-center">
+            <img
+              className="w-32 h-52"
+              src={currentWatchBookState.book.images.l}
+              alt="No picture"
+            />
+            <div className="flex gap-1 items-center">
+              <CardDescription>
+                Pages: {currentWatchBookState.book?.number_of_pages}
+              </CardDescription>
+              <FavoriteButton currentBook={currentWatchBookState.book} />
+            </div>
             <CardTitle>{currentWatchBookState.book?.title}</CardTitle>
             <CardDescription>
               <span className="font-bold">Author:</span>{" "}
               {currentWatchBookState.book?.author.name}
             </CardDescription>
-          </CardContent>
+          </CardHeader>
+          <CardContent className="flex flex-col justify-center items-center gap-1"></CardContent>
           <CardContent>
-            <p>{currentWatchBookState.book?.description}</p>
+            <p className="overflow-scroll">
+              {currentWatchBookState.book?.description}
+            </p>
           </CardContent>
-          <CardFooter className="p-0">
-            <Button className="bg-transparent">
-              <Heart className="text-primary w-10 h-10" />
-            </Button>
+          <CardFooter className="flex justify-center">
+            <Button>Add review</Button>
           </CardFooter>
         </Card>
       )}
-    </>
+    </main>
   );
 };
 

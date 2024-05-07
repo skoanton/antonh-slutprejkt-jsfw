@@ -1,4 +1,4 @@
-import BookCard from "@/components/ui/BookSearchCard";
+import BookSearchCard from "@/components/ui/BookSearchCard";
 import { useFetch } from "@/hooks/useFetch";
 import { TitleSearchQueryResult, TitleSearchResult } from "@/types/searchTypes";
 
@@ -23,12 +23,18 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   });
 
   return (
-    <div className="grid grid-cols-1 gap-2 mx-2">
-      {searchResults &&
-        searchResults.map((result, index) => {
-          return <BookCard key={index} bookSearched={result} />;
-        })}
-    </div>
+    <main className="">
+      <ul className="grid grid-cols-1 mx-2 h-full">
+        {searchResults &&
+          searchResults.map((result, index) => {
+            return (
+              <li key={index}>
+                <BookSearchCard bookSearched={result} />;
+              </li>
+            );
+          })}
+      </ul>
+    </main>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Divide, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { useContext } from "react";
@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import FavoriteButton from "@/components/FavoriteButton";
 
 type FavoritedCardProps = {
   favoritesPage: boolean;
@@ -20,50 +21,40 @@ type FavoritedCardProps = {
 const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
   const { shelfState } = useContext(ShelfContext);
 
-  const handleOnClick = () => {
-    console.log("clicked");
-  };
-
-  const handleOnFavoritesClick = () => {
-    console.log("clicked");
-  };
-
   return (
     <>
       {favoritesPage && (
         <>
-          {shelfState.favorites && (
+          {shelfState.favorites.length > 0 ? (
             <>
               <h1 className="text-center text-3xl text-primary-foreground p-2">
                 {" "}
                 Books: {shelfState.favorites.length}
               </h1>
               {shelfState.favorites.map((book) => (
-                <Card className="flex items-center" key={book.id}>
-                  <Link to={`/book/${book.id}`} onClick={handleOnClick}>
-                    <CardHeader className="p-2">
+                <Card className="flex " key={book.id}>
+                  <Link to={`/book/${book.id}`}>
+                    <CardHeader className="p-2 flex-row items-center gap-2">
                       <img
                         className="w-32 h-32 object-contain"
                         src={book.images.s}
                         alt="Book Cover"
                       />
+                      <div>
+                        <CardTitle>{book.title}</CardTitle>
+                        <CardDescription>{book.author.name}</CardDescription>
+                      </div>
                     </CardHeader>
-                    <CardContent className="flex-grow p-2">
-                      <CardTitle>{book.title}</CardTitle>
-                      <CardDescription>{book.author.name}</CardDescription>
-                    </CardContent>
+                    <CardContent className="flex-grow p-2"></CardContent>
                   </Link>
-                  <CardFooter className="p-0">
-                    <Button
-                      onClick={handleOnFavoritesClick}
-                      className="bg-transparent"
-                    >
-                      <Heart className="text-primary w-10 h-10" />
-                    </Button>
+                  <CardFooter className="p-0 ml-auto">
+                    <FavoriteButton currentBook={book} />
                   </CardFooter>
                 </Card>
               ))}
             </>
+          ) : (
+            <div>No favorites</div>
           )}
         </>
       )}

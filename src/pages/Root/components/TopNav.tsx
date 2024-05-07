@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { ArrowLeft, BookCheck, Divide, Heart } from "lucide-react";
+import { ArrowLeft, BookCheck, Heart } from "lucide-react";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const TopNav = ({}: TopNavProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <header className="flex justify-between">
+    <header className="grid grid-cols-3">
       {location.pathname !== "/" && (
         <NavigationMenu>
           <NavigationMenuList>
@@ -27,19 +27,23 @@ const TopNav = ({}: TopNavProps) => {
         </NavigationMenu>
       )}
       {location.pathname === "/" ? (
-        <h2 className="text-5xl mx-auto uppercase text-primary-foreground">
+        <h1 className="text-5xl justify-self-center uppercase text-primary-foreground">
           Book Library
-        </h2>
+        </h1>
       ) : location.pathname.startsWith("/search/") ? (
-        <h2 className="text-4xl mx-auto text-primary-foreground">Results</h2>
+        <h1 className="text-4xl justify-self-center text-primary-foreground">
+          Results
+        </h1>
       ) : location.pathname.startsWith("/book/") ? (
-        <h2 className="text-4xl mx-auto text-primary-foreground">Book</h2>
+        <h1 className="text-4xl justify-self-center text-primary-foreground">
+          Book
+        </h1>
       ) : location.pathname === "/shelf/favorites" ? (
         <>
-          <h2 className="text-4xl mx-auto text-primary-foreground">
+          <h1 className="text-4xl justify-self-center text-primary-foreground">
             Favorites
-          </h2>
-          <NavigationMenu>
+          </h1>
+          <NavigationMenu className="justify-self-end">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Heart className="w-12 h-12 text-secondary" />
@@ -54,9 +58,9 @@ const TopNav = ({}: TopNavProps) => {
         </>
       ) : location.pathname === "/shelf/read" ? (
         <>
-          <h2 className="text-4xl mx-auto text-primary-foreground">
+          <h1 className="text-4xl justify-self-center text-primary-foreground">
             Read Books
-          </h2>
+          </h1>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -71,7 +75,9 @@ const TopNav = ({}: TopNavProps) => {
           </NavigationMenu>
         </>
       ) : (
-        <h2 className="text-4xl mx-auto text-primary-foreground">Other</h2>
+        <h1 className="text-4xl justify-self-center text-primary-foreground">
+          Other
+        </h1>
       )}
     </header>
   );
