@@ -1,9 +1,11 @@
+import FavoritedCard from "@/components/ui/FavoritedCard";
+
 type ShelfFavoritesPageProps = {};
 
 const ShelfFavoritesPage = ({}: ShelfFavoritesPageProps) => {
   return (
     <>
-      <div>Shelf Favorites Page</div>
+      <FavoritedCard favoritesPage={true} />
     </>
   );
 };

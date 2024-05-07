@@ -10,10 +10,10 @@ const Navbar = ({}: NavbarProps) => {
     <footer className="w-full bg-primary p-4 fixed bottom-0 left-0">
       <ul className="flex justify-between">
         <li>
-          <Link to="/home">
+          <Link to="/">
             <Button
               className={
-                location.pathname === "/home"
+                location.pathname === "/"
                   ? "text-muted-foreground"
                   : "text-primary-foreground"
               }
