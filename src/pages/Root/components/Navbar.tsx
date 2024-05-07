@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-
 import { Home, Library, Search } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -8,7 +7,7 @@ type NavbarProps = {};
 const Navbar = ({}: NavbarProps) => {
   const location = useLocation();
   return (
-    <header className="w-full bg-primary p-4 fixed bottom-0 left-0">
+    <footer className="w-full bg-primary p-4 fixed bottom-0 left-0">
       <ul className="flex justify-between">
         <li>
           <Link to="/home">
@@ -50,7 +49,7 @@ const Navbar = ({}: NavbarProps) => {
           </Link>
         </li>
       </ul>
-    </header>
+    </footer>
   );
 };
 

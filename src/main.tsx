@@ -10,7 +10,7 @@ import ShelfFavoritesPage from "./pages/Shelf/ShelfFavoritesPage";
 import ShelfReadPage from "./pages/Shelf/ShelfReadPage";
 import ShelfReviewPage from "./pages/Shelf/ShelfReviewPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
-import BookProvider from "./Context/BookContext/BookProvider";
+import GlobalProvider from "./Context/GlobalProvider";
 
 const router = createBrowserRouter([
   {
@@ -51,8 +51,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BookProvider>
+    <GlobalProvider>
       <RouterProvider router={router} />
-    </BookProvider>
+    </GlobalProvider>
   </React.StrictMode>
 );

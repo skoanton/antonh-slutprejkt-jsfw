@@ -4,12 +4,20 @@ export type Book = {
     publish_date: string;
     number_of_pages: number | string;
     author: Author
-    image: string
+    images: BookImage,
     description: string,
+    subject: string[],
+
 }
 
 export type Author = {
     id: string,
     name: string,
     image: string,
+}
+
+export type BookImage = {
+    s: string,
+    m: string,
+    l: string,
 }

@@ -1,4 +1,3 @@
-import { WorkFetch } from "@/types/workTypes";
 import { Heart } from "lucide-react";
 import { Button } from "./button";
 import {
@@ -10,31 +9,37 @@ import {
   CardFooter,
 } from "./card";
 import { useContext } from "react";
-import { BookContext } from "@/Context/BookContext/BookContext";
-import { useFetch } from "@/hooks/useFetch";
+import { CurrentWatchBookContext } from "@/Context/BookContext/CurrentWatchBookContext";
 
 type BookInformationProps = {};
 
 const BookInformation = ({}: BookInformationProps) => {
-  const { bookState } = useContext(BookContext);
-  const work = useFetch<WorkFetch>({
-    urlQuery: `/works/${bookState.book?.id}`,
-  });
+  const { currentWatchBookState } = useContext(CurrentWatchBookContext);
 
   return (
-    <main className="">
-      {bookState && (
-        <Card className="flex justify-center items-center flex-col">
+    <>
+      {currentWatchBookState && (
+        <Card className="flex justify-center items-center flex-col overflow-hidden">
           <CardHeader className="p-2">
-            <img
-              className="w-32 h-32 object-contain"
-              src={bookState.book?.image}
-              alt="No picture"
-            />
+            <img src={currentWatchBookState.book.images.m} alt="No picture" />
           </CardHeader>
-          <CardContent className="flex-grow p-2">
-            <CardTitle>{bookState.book?.title}</CardTitle>
-            <CardDescription>{bookState.book?.author.name}</CardDescription>
+          <CardContent className="flex items-center ">
+            <CardDescription>
+              Pages: {currentWatchBookState.book?.number_of_pages}
+            </CardDescription>
+            <Button className="bg-transparent">
+              <Heart className="text-primary w-8  h-8" />
+            </Button>
+          </CardContent>
+          <CardContent className="flex flex-col items-center">
+            <CardTitle>{currentWatchBookState.book?.title}</CardTitle>
+            <CardDescription>
+              <span className="font-bold">Author:</span>{" "}
+              {currentWatchBookState.book?.author.name}
+            </CardDescription>
+          </CardContent>
+          <CardContent>
+            <p>{currentWatchBookState.book?.description}</p>
           </CardContent>
           <CardFooter className="p-0">
             <Button className="bg-transparent">
@@ -43,7 +48,7 @@ const BookInformation = ({}: BookInformationProps) => {
           </CardFooter>
         </Card>
       )}
-    </main>
+    </>
   );
 };
 

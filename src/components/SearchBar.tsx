@@ -10,7 +10,6 @@ const SearchBar = ({}: SearchBarProps) => {
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Inside handle search");
     navigate(`/search/${e.currentTarget.search.value}`);
   };
   return (

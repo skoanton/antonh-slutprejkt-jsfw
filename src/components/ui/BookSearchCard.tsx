@@ -10,63 +10,80 @@ import { Button } from "./button";
 import { Heart } from "lucide-react";
 import { TitleSearchResult } from "@/types/searchTypes";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { BookContext } from "@/Context/BookContext/BookContext";
-import { BOOK_ACTION } from "@/Context/BookContext/BookReducer";
-import { Book } from "@/types/bookType";
+import { useContext, useEffect, useState } from "react";
+import { Book, BookImage } from "@/types/bookType";
+import { getImages } from "@/utils/getImages";
+import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
+import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
+import { getId } from "@/utils/getId";
+import { CurrentWatchBookContext } from "@/Context/BookContext/CurrentWatchBookContext";
+import { CURRENT_WATCH_BOOK_ACTION } from "@/Context/BookContext/CurrentWatchBookReducer";
+import { useBookDataAndDetails } from "@/hooks/useBookDataAndDetails";
 
 type BookSearchCardProps = {
   bookSearched: TitleSearchResult;
 };
 
 const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
-  const imageUrl = `https://covers.openlibrary.org/b/ID/${bookSearched.cover_i}-S.jpg`;
-  const bookID = bookSearched.key.split("/works/")[1];
-  const { bookDispatch } = useContext(BookContext);
-  const handleOnClick = () => {
-    const currentBook: Book = {
-      id: bookID,
-      title: bookSearched.title,
-      publish_date:
-        bookSearched.first_publish_year.toString() ||
-        "No publish date available",
-      number_of_pages: 0,
-      author: {
-        id: bookSearched.author_key[0].split("/author/")[1],
-        name: bookSearched.author_name[0] || "No author available",
-        image: "image link here", // Add empty picture of book
-      },
-      image: imageUrl,
-      description: "no desciprtion available",
-    };
+  const images: BookImage = getImages(bookSearched.cover_i);
+  const currentBookId = getId(bookSearched.key, "/works/");
+  const { currentWatchBookDispatch } = useContext(CurrentWatchBookContext);
+  const { shelfState, shelfDispatch } = useContext(ShelfContext);
+  const bookToAdd = useBookDataAndDetails(bookSearched);
 
-    bookDispatch({ type: BOOK_ACTION.ADD, payload: currentBook });
-    console.log(bookSearched);
+  const handleOnClick = () => {
+    if (bookToAdd) {
+      currentWatchBookDispatch({
+        type: CURRENT_WATCH_BOOK_ACTION.ADD,
+        payload: bookToAdd,
+      });
+    } else {
+      console.log("Book to add is undefined");
+    }
+  };
+  const handleOnFavoritesClick = () => {
+    if (shelfState.favorites.every((book) => book.id !== currentBookId)) {
+      console.log("Book not in favorites");
+      if (bookToAdd) {
+        shelfDispatch({
+          type: SHELF_ACTION.ADD_TO_FAVORITES,
+          payload: bookToAdd,
+        });
+      } else {
+        console.log("Book to add to favorites is undefined");
+      }
+    } else {
+      console.log("book is already favorited");
+    }
   };
 
   return (
     <>
       {bookSearched && (
-        <Link to={`/book/${bookID}`} key={bookID} onClick={handleOnClick}>
-          <Card className="flex items-center">
+        <Card className="flex items-center">
+          <Link
+            to={`/book/${currentBookId}`}
+            key={currentBookId}
+            onClick={handleOnClick}
+          >
             <CardHeader className="p-2">
               <img
                 className="w-32 h-32 object-contain"
-                src={imageUrl}
-                alt="No picture"
+                src={images.s}
+                alt="Book Cover"
               />
             </CardHeader>
             <CardContent className="flex-grow p-2">
               <CardTitle>{bookSearched.title}</CardTitle>
               <CardDescription>{bookSearched.author_name}</CardDescription>
             </CardContent>
-            <CardFooter className="p-0">
-              <Button className="bg-transparent">
-                <Heart className="text-primary w-10 h-10" />
-              </Button>
-            </CardFooter>
-          </Card>
-        </Link>
+          </Link>
+          <CardFooter className="p-0">
+            <Button onClick={handleOnFavoritesClick} className="bg-transparent">
+              <Heart className="text-primary w-10 h-10" />
+            </Button>
+          </CardFooter>
+        </Card>
       )}
     </>
   );

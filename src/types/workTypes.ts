@@ -1,6 +1,5 @@
 export type WorkFetch = {
-    description:        string;
-
+    description:        string | {type: string, value: string};
     title:              string;
     covers:             number[];
     subject_places:     string[];
@@ -8,14 +7,11 @@ export type WorkFetch = {
     subject_people:     string[];
     key:                string;
     authors:            Author[];
-
     subjects:           string[];
     type:               Type;
     subject_times:      string[];
     latest_revision:    number;
     revision:           number;
-
-
 }
 
 export type Author = {
