@@ -7,7 +7,7 @@ type NavbarProps = {};
 const Navbar = ({}: NavbarProps) => {
   const location = useLocation();
   return (
-    <footer className="w-full bg-primary p-4 fixed bottom-0 left-0">
+    <footer className="w-full bg-primary p-4 fixed inset-x-0 bottom-0">
       <ul className="flex justify-between">
         <li>
           <Link to="/">

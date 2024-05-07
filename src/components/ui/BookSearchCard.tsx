@@ -10,8 +10,8 @@ import { Button } from "./button";
 import { Heart } from "lucide-react";
 import { TitleSearchResult } from "@/types/searchTypes";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { Book, BookImage } from "@/types/bookType";
+import { useContext } from "react";
+import { BookImage } from "@/types/bookType";
 import { getImages } from "@/utils/getImages";
 import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
 import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
@@ -60,23 +60,24 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
   return (
     <>
       {bookSearched && (
-        <Card className="flex items-center">
+        <Card className="flex">
           <Link
             to={`/book/${currentBookId}`}
             key={currentBookId}
             onClick={handleOnClick}
           >
-            <CardHeader className="p-2">
+            <CardHeader className="p-2 flex-row items-center gap-2">
               <img
                 className="w-32 h-32 object-contain"
                 src={images.s}
                 alt="Book Cover"
               />
+              <div>
+                <CardTitle>{bookSearched.title}</CardTitle>
+                <CardDescription>{bookSearched.author_name}</CardDescription>
+              </div>
             </CardHeader>
-            <CardContent className="flex-grow p-2">
-              <CardTitle>{bookSearched.title}</CardTitle>
-              <CardDescription>{bookSearched.author_name}</CardDescription>
-            </CardContent>
+            <CardContent className="flex-grow p-2"></CardContent>
           </Link>
           <CardFooter className="p-0">
             <Button onClick={handleOnFavoritesClick} className="bg-transparent">

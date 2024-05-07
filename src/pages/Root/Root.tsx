@@ -8,9 +8,9 @@ const Root = ({}: RootProps) => {
   return (
     <>
       <TopNav />
-      <main className="h-screen">
-        <Outlet />
-      </main>
+
+      <Outlet />
+
       <Navbar />
     </>
   );

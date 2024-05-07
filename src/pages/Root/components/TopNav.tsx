@@ -14,7 +14,7 @@ const TopNav = ({}: TopNavProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <header className="flex justify-between mt-9">
+    <header className="flex justify-between">
       {location.pathname !== "/" && (
         <NavigationMenu>
           <NavigationMenuList>

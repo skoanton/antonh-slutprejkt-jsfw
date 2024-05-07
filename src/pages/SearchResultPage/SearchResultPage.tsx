@@ -23,12 +23,12 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   });
 
   return (
-    <main className="grid grid-cols-1 gap-2 mx-2">
+    <div className="grid grid-cols-1 gap-2 mx-2">
       {searchResults &&
         searchResults.map((result, index) => {
           return <BookCard key={index} bookSearched={result} />;
         })}
-    </main>
+    </div>
   );
 };
 
