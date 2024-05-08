@@ -1,7 +1,5 @@
 import { Book, Review } from "@/types/bookType"
 import { ShelfActions } from "./ShelfContext"
-import { reverse } from "dns"
-
 
 export enum SHELF_ACTION  {
     ADD_TO_FAVORITES =  "ADD_TO_FAVORITES",
@@ -39,9 +37,11 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
         
         return {...shelfState, readBooks: [...shelfState.readBooks,action.payload]};
     case SHELF_ACTION.REMOVE_FROM_READ:
+
         const updatedReadBooks = shelfState.readBooks.filter((book) => book.id != action.payload.id );
-        
-        return {...shelfState, readBooks: updatedReadBooks};
+        const updatedReviews = shelfState.review.filter((rev) => rev.id !== action.payload.id);
+      
+        return {...shelfState, readBooks: updatedReadBooks, review: updatedReviews};
     case SHELF_ACTION.ADD_REVIEW:
 
         return {...shelfState, review: [ ...shelfState.review, action.payload]};

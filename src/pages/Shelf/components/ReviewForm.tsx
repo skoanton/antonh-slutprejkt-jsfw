@@ -25,18 +25,20 @@ import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
 import { Review } from "@/types/bookType";
 import { z } from "zod";
 import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
-import { CurrentWatchBookContext } from "@/Context/BookContext/CurrentWatchBookContext";
 import { useParams } from "react-router-dom";
 
 type ReviewFormProps = {};
 
 const reviewSchema = z.object({
-  text: z.string().max(50),
+  text: z
+    .string()
+    .min(10, "At least 10 characters")
+    .max(70, "Max 70 characters"),
   rating: z.coerce
     .number()
     .min(1, "Rating must be between 1 and 5")
     .max(5, "Rating must be between 1 and 5"),
-  pages: z.coerce.number().min(1, "Number of pages must be positive"),
+  pages: z.coerce.number().min(1, "Number of pages must be greater then 1"),
 });
 
 const ReviewForm = ({}: ReviewFormProps) => {

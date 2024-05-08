@@ -59,7 +59,11 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
           {shelfState.readBooks.length > 0 ? (
             <>
               <h1 className="text-center text-3xl text-primary-foreground p-2">
-                Pages: {1000}
+                Pages:{" "}
+                {shelfState.review.reduce((acc, rev) => acc + rev.pages, 0)}
+              </h1>
+              <h1 className="text-center text-3xl text-primary-foreground p-2">
+                Books: {shelfState.readBooks.length}
               </h1>
               {shelfState.readBooks.map((book) => (
                 <Card className="flex" key={book.id}>
