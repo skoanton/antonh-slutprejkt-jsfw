@@ -23,19 +23,6 @@ const Navbar = ({}: NavbarProps) => {
           </Link>
         </li>
         <li>
-          <Link to="/search">
-            <Button
-              className={
-                location.pathname === "/search"
-                  ? "text-muted-foreground"
-                  : "text-primary-foreground"
-              }
-            >
-              <Search className="w-12 h-12" />
-            </Button>
-          </Link>
-        </li>
-        <li>
           <Link to="/shelf/favorites">
             <Button
               className={
