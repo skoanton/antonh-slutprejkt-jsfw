@@ -4,7 +4,7 @@ import { SHELF_ACTION, ShelfState, initialShelfState } from "./ShelfReducer";
 
 export type ShelfActions =
 |{ 
-    type: SHELF_ACTION.ADD_TO_FAVORITES | SHELF_ACTION.ADD_TO_READ | SHELF_ACTION.REMOVE_FROM_FAVORITES | SHELF_ACTION.REMOVE_FROM_READ;
+    type: SHELF_ACTION.ADD_TO_FAVORITES | SHELF_ACTION.ADD_TO_READ | SHELF_ACTION.REMOVE_FROM_FAVORITES;
     payload: Book 
 }|
 { 

@@ -23,12 +23,6 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
       } else {
         console.log("Book to add to read is undefined");
       }
-    } else {
-      shelfDispatch({
-        type: SHELF_ACTION.REMOVE_FROM_READ,
-        payload: currentBook,
-      });
-      console.log("book is already read");
     }
   };
   return (

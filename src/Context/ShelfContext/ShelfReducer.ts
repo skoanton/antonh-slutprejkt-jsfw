@@ -5,7 +5,6 @@ export enum SHELF_ACTION  {
     ADD_TO_FAVORITES =  "ADD_TO_FAVORITES",
     REMOVE_FROM_FAVORITES  =  "REMOVE_FROM_FAVORITES",
     ADD_TO_READ = "ADD_TO_READ",
-    REMOVE_FROM_READ = "REMOVE_FROM_READ",
     ADD_REVIEW = "ADD_REVIEW",
     UPDATE_REVIEW = "UPDATE_REVIEW"
 }
@@ -36,12 +35,7 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
     case SHELF_ACTION.ADD_TO_READ:
         
         return {...shelfState, readBooks: [...shelfState.readBooks,action.payload]};
-    case SHELF_ACTION.REMOVE_FROM_READ:
 
-        const updatedReadBooks = shelfState.readBooks.filter((book) => book.id != action.payload.id );
-        const updatedReviews = shelfState.review.filter((rev) => rev.id !== action.payload.id);
-      
-        return {...shelfState, readBooks: updatedReadBooks, review: updatedReviews};
     case SHELF_ACTION.ADD_REVIEW:
 
         return {...shelfState, review: [ ...shelfState.review, action.payload]};
