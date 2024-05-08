@@ -8,9 +8,7 @@ const Root = ({}: RootProps) => {
   return (
     <>
       <TopNav />
-
       <Outlet />
-
       <Navbar />
     </>
   );
