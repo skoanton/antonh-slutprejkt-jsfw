@@ -28,13 +28,14 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
 
     return {...shelfState, favorites: [...shelfState.favorites,action.payload] }
             
-    case SHELF_ACTION.REMOVE_FROM_FAVORITES:
+    case SHELF_ACTION.REMOVE_FROM_FAVORITES:{
         const updatedFavorites = shelfState.favorites.filter((book) => book.id != action.payload.id );
         
         return {...shelfState, favorites: updatedFavorites};
+    }
     case SHELF_ACTION.ADD_TO_READ:
-        
-        return {...shelfState, readBooks: [...shelfState.readBooks,action.payload]};
+        const updatedFavorites = shelfState.favorites.filter ((book) => book.id !== action.payload.id)
+        return {...shelfState, readBooks: [...shelfState.readBooks,action.payload], favorites: updatedFavorites};
 
     case SHELF_ACTION.ADD_REVIEW:
 

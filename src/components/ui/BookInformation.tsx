@@ -14,6 +14,7 @@ import ReviewForm from "@/pages/Shelf/components/ReviewForm";
 import { Book } from "@/types/bookType";
 import { useLocation, useParams } from "react-router-dom";
 import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
+import { Badge } from "@/components/ui/badge";
 
 type BookInformationProps = {};
 
@@ -21,6 +22,7 @@ const BookInformation = ({}: BookInformationProps) => {
   const { currentWatchBookState } = useContext(CurrentWatchBookContext);
   const { shelfState } = useContext(ShelfContext);
   const [currentBook, setCurrentBook] = useState<Book>();
+  const [pages, setPages] = useState<number>();
   const params = useParams<{ bookId: string }>();
   const location = useLocation();
   const { from } = location.state;
@@ -58,13 +60,15 @@ const BookInformation = ({}: BookInformationProps) => {
               <span className="font-bold">Author:</span>{" "}
               {currentBook.author.name}
             </CardDescription>
-            <CardDescription>
-              Pages: {currentBook.number_of_pages}
-            </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col justify-center items-center gap-1"></CardContent>
           <CardContent>
             <p className="overflow-scroll">{currentBook.description}</p>
+          </CardContent>
+          <CardContent className="flex gap-2 flex-wrap">
+            {currentBook.subject.slice(0, 10).map((genre) => {
+              return <Badge>{genre}</Badge>;
+            })}
           </CardContent>
           <CardFooter className="flex justify-center">
             <ReviewForm />
