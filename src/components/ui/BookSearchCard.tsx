@@ -46,6 +46,7 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
             to={`/book/${currentBookId}`}
             key={currentBookId}
             onClick={handleOnClick}
+            state={{ from: "" }}
           >
             <CardHeader className="flex-row items-center">
               <img

@@ -7,7 +7,7 @@ export type Book = {
     images: BookImage,
     description: string,
     subject: string[],
-
+    review?: Review
 }
 
 export type Author = {
@@ -20,4 +20,11 @@ export type BookImage = {
     s: string,
     m: string,
     l: string,
+}
+
+export type Review = {
+    id: string,
+    text: string,
+    pages: number,
+    rating: number;
 }

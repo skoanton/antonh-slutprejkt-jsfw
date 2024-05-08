@@ -38,7 +38,9 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
         className="bg-transparent focus:bg-transparent"
       >
         {shelfState.readBooks.every((book) => book.id !== currentBook.id) ? (
-          <BookIcon className=" text-primary w-10 h-10" />
+          <>
+            <BookIcon className=" text-primary w-10 h-10" />
+          </>
         ) : (
           <BookCheck className=" text-primary w-10 h-10" />
         )}

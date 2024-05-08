@@ -30,7 +30,7 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
               </h1>
               {shelfState.favorites.map((book) => (
                 <Card className="flex" key={book.id}>
-                  <Link to={`/book/${book.id}`}>
+                  <Link to={`/book/${book.id}`} state={{ from: "favorites" }}>
                     <CardHeader className="p-2 flex-row items-center gap-2">
                       <img
                         className="w-32 h-32 object-contain"
@@ -63,7 +63,7 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
               </h1>
               {shelfState.readBooks.map((book) => (
                 <Card className="flex" key={book.id}>
-                  <Link to={`/book/${book.id}`}>
+                  <Link to={`/book/${book.id}`} state={{ from: "readBooks" }}>
                     <CardHeader className="p-2 flex-row items-center gap-2">
                       <img
                         className="w-32 h-32 object-contain"

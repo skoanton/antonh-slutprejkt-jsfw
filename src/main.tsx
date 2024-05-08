@@ -11,6 +11,7 @@ import ShelfReadPage from "./pages/Shelf/ShelfReadPage";
 import ShelfReviewPage from "./pages/Shelf/ShelfReviewPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
 import GlobalProvider from "./Context/GlobalProvider";
+import ReviewForm from "./pages/Shelf/components/ReviewForm";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/author/authorId",
         element: <AuthorPage />,
+      },
+      {
+        path: "book/review/:bookId",
+        element: <ReviewForm />,
       },
     ],
   },
