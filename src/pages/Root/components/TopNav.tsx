@@ -14,7 +14,9 @@ const TopNav = ({}: TopNavProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <header className="grid grid-cols-3">
+    <header
+      className={`${location.pathname === "/" ? "" : "grid grid-cols-3"} p-2`}
+    >
       {location.pathname !== "/" && (
         <NavigationMenu>
           <NavigationMenuList>
@@ -27,7 +29,7 @@ const TopNav = ({}: TopNavProps) => {
         </NavigationMenu>
       )}
       {location.pathname === "/" ? (
-        <h1 className="text-5xl justify-self-center uppercase text-primary-foreground">
+        <h1 className="text-5xl text-center uppercase text-primary-foreground">
           Book Library
         </h1>
       ) : location.pathname.startsWith("/search/") ? (

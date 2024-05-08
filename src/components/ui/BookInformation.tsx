@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Book, Heart } from "lucide-react";
 import { Button } from "./button";
 
 import { useContext } from "react";
@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./card";
+import ReadButton from "../ReadButton";
 
 type BookInformationProps = {};
 
@@ -28,16 +29,17 @@ const BookInformation = ({}: BookInformationProps) => {
               src={currentWatchBookState.book.images.l}
               alt="No picture"
             />
-            <div className="flex gap-1 items-center">
-              <CardDescription>
-                Pages: {currentWatchBookState.book?.number_of_pages}
-              </CardDescription>
+            <div className="flex gap-1 items-center justify-center">
               <FavoriteButton currentBook={currentWatchBookState.book} />
+              <ReadButton currentBook={currentWatchBookState.book} />
             </div>
             <CardTitle>{currentWatchBookState.book?.title}</CardTitle>
             <CardDescription>
               <span className="font-bold">Author:</span>{" "}
               {currentWatchBookState.book?.author.name}
+            </CardDescription>
+            <CardDescription>
+              Pages: {currentWatchBookState.book?.number_of_pages}
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col justify-center items-center gap-1"></CardContent>

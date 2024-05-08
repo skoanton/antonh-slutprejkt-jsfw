@@ -31,9 +31,12 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
         
         return {...shelfState, favorites: updatedFavorites};
     case SHELF_ACTION.ADD_TO_READ:
-        return shelfState;
+        
+        return {...shelfState, readBooks: [...shelfState.readBooks,action.payload]};
     case SHELF_ACTION.REMOVE_FROM_READ:
-        return shelfState;
+        const updatedReadBooks = shelfState.readBooks.filter((book) => book.id != action.payload.id );
+        
+        return {...shelfState, readBooks: updatedReadBooks};
         default:
            return shelfState;
     }

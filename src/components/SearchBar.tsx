@@ -13,7 +13,7 @@ const SearchBar = ({}: SearchBarProps) => {
     navigate(`/search/${e.currentTarget.search.value}`);
   };
   return (
-    <main className="h-screen flex flex-col justify-center items-center">
+    <main className="h-[calc(100vh-10rem)] flex justify-center items-center">
       <section className="w-full">
         <form
           onSubmit={handleSearch}
