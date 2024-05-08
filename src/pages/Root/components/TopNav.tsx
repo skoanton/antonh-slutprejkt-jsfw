@@ -61,9 +61,9 @@ const TopNav = ({}: TopNavProps) => {
       ) : location.pathname === "/shelf/read" ? (
         <>
           <h1 className="text-4xl justify-self-center text-primary-foreground">
-            Read Books
+            Read
           </h1>
-          <NavigationMenu>
+          <NavigationMenu className="justify-self-end">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link to="/shelf/favorites">

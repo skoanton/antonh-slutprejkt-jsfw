@@ -23,7 +23,7 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   });
 
   return (
-    <main className="h-[calc(100vh-20rem)] overflow-hidden">
+    <main className="h-[calc(100vh-10rem)] overflow-scroll">
       <ul className="grid grid-cols-1 mx-2 h-full">
         {searchResults &&
           searchResults.map((result, index) => {

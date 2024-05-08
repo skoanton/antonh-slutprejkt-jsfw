@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import FavoriteButton from "@/components/FavoriteButton";
+import ReadButton from "@/components/ReadButton";
 
 type FavoritedCardProps = {
   favoritesPage: boolean;
@@ -58,7 +59,7 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
           {shelfState.readBooks.length > 0 ? (
             <>
               <h1 className="text-center text-3xl text-primary-foreground p-2">
-                Books: {shelfState.readBooks.length}
+                Pages: {1000}
               </h1>
               {shelfState.readBooks.map((book) => (
                 <Card className="flex" key={book.id}>
@@ -77,7 +78,7 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
                     <CardContent className="flex-grow p-2" />
                   </Link>
                   <CardFooter className="p-0 ml-auto">
-                    <FavoriteButton currentBook={book} />
+                    <ReadButton currentBook={book} />
                   </CardFooter>
                 </Card>
               ))}

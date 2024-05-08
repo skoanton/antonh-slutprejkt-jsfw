@@ -3,7 +3,7 @@ import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
 import { Book } from "@/types/bookType";
 import { useContext } from "react";
 import { Button } from "./ui/button";
-import { Book as BookIcon } from "lucide-react";
+import { BookCheck, Book as BookIcon } from "lucide-react";
 
 type ReadButtonProps = {
   currentBook: Book;
@@ -37,7 +37,11 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
         onClick={handleOnClick}
         className="bg-transparent focus:bg-transparent"
       >
-        <BookIcon className=" text-primary w-10 h-10" />
+        {shelfState.readBooks.every((book) => book.id !== currentBook.id) ? (
+          <BookIcon className=" text-primary w-10 h-10" />
+        ) : (
+          <BookCheck className=" text-primary w-10 h-10" />
+        )}
       </Button>
     </>
   );
