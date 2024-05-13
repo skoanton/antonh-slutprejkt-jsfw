@@ -5,12 +5,13 @@ import { useContext } from "react";
 import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
 import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
 import { Book } from "@/types/bookType";
-
+import { useToast } from "@/components/ui/use-toast";
 type FavoriteButtonProps = {
   currentBook: Book;
 };
 
 const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
+  const { toast } = useToast();
   const { shelfState, shelfDispatch } = useContext(ShelfContext);
 
   const handleOnFavoritesClick = () => {
@@ -21,6 +22,9 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
           type: SHELF_ACTION.ADD_TO_FAVORITES,
           payload: currentBook,
         });
+        toast({
+          title: "Added to favorites",
+        });
       } else {
         console.log("Book to add to favorites is undefined");
       }
@@ -28,6 +32,9 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
       shelfDispatch({
         type: SHELF_ACTION.REMOVE_FROM_FAVORITES,
         payload: currentBook,
+      });
+      toast({
+        title: "Removed from favorites",
       });
       console.log("book is already favorited");
     }

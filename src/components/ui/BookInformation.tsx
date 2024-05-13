@@ -22,7 +22,6 @@ const BookInformation = ({}: BookInformationProps) => {
   const { currentWatchBookState } = useContext(CurrentWatchBookContext);
   const { shelfState } = useContext(ShelfContext);
   const [currentBook, setCurrentBook] = useState<Book>();
-  const [pages, setPages] = useState<number>();
   const params = useParams<{ bookId: string }>();
   const location = useLocation();
   const { from } = location.state;

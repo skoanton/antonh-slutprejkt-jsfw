@@ -25,13 +25,13 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
   const images: BookImage = getImages(bookSearched.cover_i);
   const currentBookId = getId(bookSearched.key, "/works/");
   const { currentWatchBookDispatch } = useContext(CurrentWatchBookContext);
-  const bookToAdd = useBookDataAndDetails(bookSearched);
+  const { newBook } = useBookDataAndDetails(bookSearched);
 
   const handleOnClick = () => {
-    if (bookToAdd) {
+    if (newBook) {
       currentWatchBookDispatch({
         type: CURRENT_WATCH_BOOK_ACTION.ADD,
-        payload: bookToAdd,
+        payload: newBook,
       });
     } else {
       console.log("Book to add is undefined");
@@ -48,7 +48,7 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
             onClick={handleOnClick}
             state={{ from: "" }}
           >
-            <CardHeader className="flex-row items-center">
+            <CardHeader className="flex-row gap-1 items-center">
               <img
                 className="w-32 h-32 object-contain"
                 src={images.l}
@@ -62,7 +62,7 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
             <CardContent className="flex-grow p-2"></CardContent>
           </Link>
           <CardFooter className="p-0 ml-auto">
-            {bookToAdd && <FavoriteButton currentBook={bookToAdd} />}
+            {newBook && <FavoriteButton currentBook={newBook} />}
           </CardFooter>
         </Card>
       )}
