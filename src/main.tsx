@@ -8,8 +8,6 @@ import SearchResultPage from "./pages/SearchResultPage/SearchResultPage";
 import BookPage from "./pages/BookPage/BookPage";
 import ShelfFavoritesPage from "./pages/Shelf/ShelfFavoritesPage";
 import ShelfReadPage from "./pages/Shelf/ShelfReadPage";
-import ShelfReviewPage from "./pages/Shelf/ShelfReviewPage";
-import AuthorPage from "./pages/AuthorPage/AuthorPage";
 import GlobalProvider from "./Context/GlobalProvider";
 import ReviewForm from "./pages/Shelf/components/ReviewForm";
 import ErrorPage from "./components/ErrorPage";
