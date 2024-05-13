@@ -25,7 +25,7 @@ const BookInformation = ({}: BookInformationProps) => {
   const params = useParams<{ bookId: string }>();
   const location = useLocation();
   const { from } = location.state;
-  console.log("Current book review", shelfState.review);
+
   useEffect(() => {
     if (from === "favorites") {
       setCurrentBook(
@@ -66,7 +66,7 @@ const BookInformation = ({}: BookInformationProps) => {
           </CardContent>
           <CardContent className="flex gap-2 flex-wrap">
             {currentBook.subject.slice(0, 10).map((genre) => {
-              return <Badge>{genre}</Badge>;
+              return <Badge key={genre}>{genre}</Badge>;
             })}
           </CardContent>
           <CardFooter className="flex justify-center">

@@ -41,12 +41,12 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
 
         return {...shelfState, review: [ ...shelfState.review, action.payload]};
     case SHELF_ACTION.UPDATE_REVIEW:
-        console.log("uppdaterar review", action.payload);
+        
         
         const updatedReview = shelfState.review.map((rev) => {
            return rev.id === action.payload.id ? action.payload :  rev
         })
-        console.log(updatedReview);
+    
         return {...shelfState, review: updatedReview}
 
         default:

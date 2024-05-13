@@ -22,7 +22,7 @@ export const useFetch = <T> ({urlQuery}:useFetchProps) => {
                 const data: T  =  await response.json();
                 
                 if(!ignore){
-                    console.log("getting data")
+            
                     setIsLoading(false);
                     setData(data);
                 }

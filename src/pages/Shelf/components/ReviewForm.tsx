@@ -45,7 +45,6 @@ const ReviewForm = ({}: ReviewFormProps) => {
   const { shelfState, shelfDispatch } = useContext(ShelfContext);
 
   const params = useParams<{ bookId: string }>();
-  console.log("Current book id", params.bookId);
 
   const currentReview = shelfState.review.find(
     (review) => review.id === params.bookId
@@ -62,11 +61,9 @@ const ReviewForm = ({}: ReviewFormProps) => {
   });
 
   const onSubmit = (data: z.infer<typeof reviewSchema>) => {
-    console.log(data);
     if (params.bookId) {
       const reviewWithId: Review = { ...data, id: params.bookId };
       if (!currentReview) {
-        console.log("reviewtiwhid: ", reviewWithId);
         shelfDispatch({
           type: SHELF_ACTION.ADD_REVIEW,
           payload: reviewWithId,

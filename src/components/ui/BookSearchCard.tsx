@@ -34,7 +34,7 @@ const BookSearchCard = ({ bookSearched }: BookSearchCardProps) => {
         payload: newBook,
       });
     } else {
-      console.log("Book to add is undefined");
+      console.error("Book to add is undefined");
     }
   };
 

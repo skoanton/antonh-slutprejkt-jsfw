@@ -15,7 +15,6 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
   const { toast } = useToast();
   const handleOnClick = () => {
     if (shelfState.readBooks.every((book) => book.id !== currentBook.id)) {
-      console.log("Book not in read");
       if (currentBook) {
         shelfDispatch({
           type: SHELF_ACTION.ADD_TO_READ,
@@ -25,7 +24,7 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
           title: "Added to Read",
         });
       } else {
-        console.log("Book to add to read is undefined");
+        console.error("Book to add to read is undefined");
       }
     }
   };

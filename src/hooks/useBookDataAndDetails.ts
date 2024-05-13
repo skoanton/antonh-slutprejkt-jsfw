@@ -40,7 +40,7 @@ export const useBookDataAndDetails = (bookToAdd: TitleSearchResult) :BookDataRes
         subject: data.subjects ? data.subjects.map((subject) => subject): ["no subjects available"],
       };
       setNewBook(currentBook);
-      console.log(currentBook);
+    
     }
     
   }, [data]);

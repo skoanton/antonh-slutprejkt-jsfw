@@ -16,7 +16,6 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
 
   const handleOnFavoritesClick = () => {
     if (shelfState.favorites.every((book) => book.id !== currentBook.id)) {
-      console.log("Book not in favorites");
       if (currentBook) {
         shelfDispatch({
           type: SHELF_ACTION.ADD_TO_FAVORITES,
@@ -26,7 +25,6 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
           title: "Added to favorites",
         });
       } else {
-        console.log("Book to add to favorites is undefined");
       }
     } else {
       shelfDispatch({
@@ -36,7 +34,6 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
       toast({
         title: "Removed from favorites",
       });
-      console.log("book is already favorited");
     }
   };
   return (
