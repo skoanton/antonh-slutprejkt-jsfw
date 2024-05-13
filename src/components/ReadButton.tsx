@@ -22,6 +22,7 @@ const ReadButton = ({ currentBook }: ReadButtonProps) => {
         });
         toast({
           title: "Added to Read",
+          duration: 1000,
         });
       } else {
         console.error("Book to add to read is undefined");

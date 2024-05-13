@@ -51,7 +51,9 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
               ))}
             </>
           ) : (
-            <div className="text-center">No favorites</div>
+            <div className="text-center text-primary-foreground">
+              No favorites
+            </div>
           )}
         </>
       ) : (
@@ -88,7 +90,9 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
               ))}
             </>
           ) : (
-            <div className="text-center">No books read yet</div>
+            <div className="text-center text-primary-foreground">
+              No books read yet
+            </div>
           )}
         </>
       )}

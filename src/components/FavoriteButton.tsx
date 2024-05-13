@@ -23,6 +23,7 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
         });
         toast({
           title: "Added to favorites",
+          duration: 1000,
         });
       } else {
       }
@@ -33,6 +34,7 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
       });
       toast({
         title: "Removed from favorites",
+        duration: 1000,
       });
     }
   };
