@@ -26,7 +26,7 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
     switch (action.type) {
     case SHELF_ACTION.ADD_TO_FAVORITES:
 
-    return {...shelfState, favorites: [...shelfState.favorites,action.payload] }
+    {return {...shelfState, favorites: [...shelfState.favorites,action.payload] }}
             
     case SHELF_ACTION.REMOVE_FROM_FAVORITES:{
         const updatedFavorites = shelfState.favorites.filter((book) => book.id != action.payload.id );
@@ -34,20 +34,19 @@ export const shelfReducer = (shelfState: ShelfState, action: ShelfActions) : She
         return {...shelfState, favorites: updatedFavorites};
     }
     case SHELF_ACTION.ADD_TO_READ:
-        const updatedFavorites = shelfState.favorites.filter ((book) => book.id !== action.payload.id)
+        {const updatedFavorites = shelfState.favorites.filter ((book) => book.id !== action.payload.id)
         return {...shelfState, readBooks: [...shelfState.readBooks,action.payload], favorites: updatedFavorites};
-
+}
     case SHELF_ACTION.ADD_REVIEW:
 
-        return {...shelfState, review: [ ...shelfState.review, action.payload]};
+       { return {...shelfState, review: [ ...shelfState.review, action.payload]};}
     case SHELF_ACTION.UPDATE_REVIEW:
-        
-        
-        const updatedReview = shelfState.review.map((rev) => {
+              
+       { const updatedReview = shelfState.review.map((rev) => {
            return rev.id === action.payload.id ? action.payload :  rev
         })
     
-        return {...shelfState, review: updatedReview}
+        return {...shelfState, review: updatedReview}}
 
         default:
            return shelfState;

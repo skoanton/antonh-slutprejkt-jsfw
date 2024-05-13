@@ -16,9 +16,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { ShelfContext } from "@/Context/ShelfContext/ShelfContext";
 import { Badge } from "@/components/ui/badge";
 
-type BookInformationProps = {};
-
-const BookInformation = ({}: BookInformationProps) => {
+const BookInformation = () => {
   const { currentWatchBookState } = useContext(CurrentWatchBookContext);
   const { shelfState } = useContext(ShelfContext);
   const [currentBook, setCurrentBook] = useState<Book>();

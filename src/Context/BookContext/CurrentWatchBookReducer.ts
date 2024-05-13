@@ -39,30 +39,38 @@ export const initialCurrentWatchBookState: currentWatchBookState = {
 export const currentWatchBookReducer = (currentWatchbookState: currentWatchBookState,action: CurrentWatchBookActions, ) :currentWatchBookState => {
 
     switch (action.type) {
-        case CURRENT_WATCH_BOOK_ACTION.ADD:
+        case CURRENT_WATCH_BOOK_ACTION.ADD:{
+
             
-        return {...currentWatchbookState, book: action.payload};
+            return {...currentWatchbookState, book: action.payload};
+        }
         
-        case CURRENT_WATCH_BOOK_ACTION.REMOVE:
+        case CURRENT_WATCH_BOOK_ACTION.REMOVE:{
+
             return {...currentWatchbookState, book: initialCurrentWatchBookState.book};
-        case CURRENT_WATCH_BOOK_ACTION.ADD_DESCRIPTION:
+        }
+        case CURRENT_WATCH_BOOK_ACTION.ADD_DESCRIPTION: {
+
             if(currentWatchbookState.book){
                 const updatedBook = {
                     ...currentWatchbookState.book,
-                        description: action.payload,
+                    description: action.payload,
                 }
                 return {...currentWatchbookState, book: updatedBook};
             }
             return currentWatchbookState;
-        case CURRENT_WATCH_BOOK_ACTION.ADD_SUBJECTS:
+        }
+        case CURRENT_WATCH_BOOK_ACTION.ADD_SUBJECTS:{
+
             if(currentWatchbookState.book){
                 const updatedBook = {
                     ...currentWatchbookState.book,
-                        subjects: action.payload,
+                    subjects: action.payload,
                 }
                 return {...currentWatchbookState, book: updatedBook};
             }
             return currentWatchbookState;
+        }
         default:
             return currentWatchbookState;
             

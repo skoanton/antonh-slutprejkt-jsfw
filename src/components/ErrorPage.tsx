@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
-type ErrorPageProps = {};
-
-const ErrorPage = ({}: ErrorPageProps) => {
+const ErrorPage = () => {
   return (
     <main className="h-screen flex flex-col gap-5 items-center justify-center">
       <p className="text-primary-foreground text-4xl text-center">

@@ -1,8 +1,6 @@
 import ShelfCard from "./components/ShelfCard";
 
-type ShelfReadPageProps = {};
-
-const ShelfReadPage = ({}: ShelfReadPageProps) => {
+const ShelfReadPage = () => {
   return (
     <>
       <ShelfCard favoritesPage={false} />

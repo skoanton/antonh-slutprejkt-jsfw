@@ -1,8 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 
-type HomePageProps = {};
-
-const HomePage = ({}: HomePageProps) => {
+const HomePage = () => {
   return (
     <>
       <SearchBar />

@@ -12,13 +12,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-type SearchBarProps = {};
-
 const searchSchema = z.object({
   searchString: z.string().min(1, "Please type a word first"),
 });
 
-const SearchBar = ({}: SearchBarProps) => {
+const SearchBar = () => {
   const navigate = useNavigate();
 
   const searchForm = useForm<z.infer<typeof searchSchema>>({

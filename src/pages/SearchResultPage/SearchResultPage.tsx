@@ -6,9 +6,8 @@ import { TitleSearchQueryResult, TitleSearchResult } from "@/types/searchTypes";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NoSearchResult from "./components/NoSearchResult";
-type SearchResultPageProps = {};
 
-const SearchResultPage = ({}: SearchResultPageProps) => {
+const SearchResultPage = () => {
   const params = useParams<{ searchParam: string }>();
   const [searchResults, setSearchResults] = useState<TitleSearchResult[]>([]);
   const newParam = params.searchParam?.split(" ").join("+");
