@@ -9,15 +9,20 @@ import { Book } from "@/types/bookType";
 import { getId } from "@/utils/getId";
 import { getImages } from "@/utils/getImages";
 
-export const useBookDataAndDetails = (bookToAdd: TitleSearchResult) : Book | undefined => {
+type BookDataResult = {
+  newBook: Book | undefined,
+  isLoading: boolean
+}
+
+export const useBookDataAndDetails = (bookToAdd: TitleSearchResult) :BookDataResult => {
   const [newBook, setNewBook] = useState<Book>();
-  const work = useFetch<WorkFetch>({
+  const {data, isLoading} = useFetch<WorkFetch>({
     urlQuery: `${bookToAdd.key}.json`,
   });
 
   useEffect(() => {
 
-    if(work){
+    if(data){
       const currentBook: Book = {
         id: getId(bookToAdd.key, "/works/"),
         title: bookToAdd.title,
@@ -31,15 +36,15 @@ export const useBookDataAndDetails = (bookToAdd: TitleSearchResult) : Book | und
           image: "noImage.png",
         },
         images: getImages(bookToAdd.cover_i),
-        description: work.description ? (typeof work?.description === "string" ? work.description : work.description.value): "No description available",
-        subject: work.subjects ? work.subjects.map((subject) => subject): ["no subjects available"],
+        description: data.description ? (typeof data?.description === "string" ? data.description : data.description.value): "No description available",
+        subject: data.subjects ? data.subjects.map((subject) => subject): ["no subjects available"],
       };
       setNewBook(currentBook);
       console.log(currentBook);
     }
     
-  }, [work]);
+  }, [data]);
  
-  return newBook;
+  return {newBook,isLoading};
 
 };

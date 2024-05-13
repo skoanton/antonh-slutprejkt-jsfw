@@ -1,3 +1,4 @@
+import Spinner from "@/components/Spinner";
 import BookSearchCard from "@/components/ui/BookSearchCard";
 import { useFetch } from "@/hooks/useFetch";
 import { TitleSearchQueryResult, TitleSearchResult } from "@/types/searchTypes";
@@ -11,16 +12,19 @@ const SearchResultPage = ({}: SearchResultPageProps) => {
   const [searchResults, setSearchResults] = useState<TitleSearchResult[]>([]);
   const newParam = params.searchParam?.split(" ").join("+");
   const url = `/search.json?title=${newParam}`;
-  const fetchedData = useFetch<TitleSearchQueryResult>({
+  const { data, isLoading } = useFetch<TitleSearchQueryResult>({
     urlQuery: url,
   });
 
   useEffect(() => {
-    if (fetchedData) {
-      console.log(fetchedData.docs);
-      setSearchResults(fetchedData.docs);
+    if (data) {
+      setSearchResults(data.docs);
     }
   });
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <main className="h-[calc(100vh-10rem)] overflow-scroll">

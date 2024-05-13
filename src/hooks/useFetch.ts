@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 
 type useFetchProps = {
-    urlQuery: string | null,
+    urlQuery: string,
 }
 
 export const useFetch = <T> ({urlQuery}:useFetchProps) => {
-    if (!urlQuery) return;
     const BASE_URL = "https://openlibrary.org"
     const fetchUrl = `${BASE_URL}${urlQuery}`
-    console.log("Fetching from",fetchUrl)
+    const [isLoading, setIsLoading] = useState(true);
     const [data,setData] = useState<T>();
     useEffect(() => {
         let ignore = false;
         const fetchApi = async() => {
-
+            setIsLoading(true);
             try {
                 const response = await fetch(fetchUrl);
                 if(!response.ok){
@@ -24,7 +23,7 @@ export const useFetch = <T> ({urlQuery}:useFetchProps) => {
                 
                 if(!ignore){
                     console.log("getting data")
-                    
+                    setIsLoading(false);
                     setData(data);
                 }
     
@@ -37,9 +36,10 @@ export const useFetch = <T> ({urlQuery}:useFetchProps) => {
 
         return () => {
             ignore = true;
+            
         }
 
     },[urlQuery])
 
-    return data;
+    return {data,isLoading};
 }
