@@ -41,14 +41,6 @@ const router = createBrowserRouter([
         element: <ShelfReadPage />,
       },
       {
-        path: "/shelf/read/review/:bookId",
-        element: <ShelfReviewPage />,
-      },
-      {
-        path: "/author/authorId",
-        element: <AuthorPage />,
-      },
-      {
         path: "book/review/:bookId",
         element: <ReviewForm />,
       },
