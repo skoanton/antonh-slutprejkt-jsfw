@@ -12,11 +12,13 @@ import ShelfReviewPage from "./pages/Shelf/ShelfReviewPage";
 import AuthorPage from "./pages/AuthorPage/AuthorPage";
 import GlobalProvider from "./Context/GlobalProvider";
 import ReviewForm from "./pages/Shelf/components/ReviewForm";
+import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
