@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Home, Library, Search } from "lucide-react";
+import { Home, Library } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 type NavbarProps = {};
