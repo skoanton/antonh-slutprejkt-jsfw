@@ -9,7 +9,7 @@
 - Zod
 - Shadcn
 
-## How to start
+## För att testa
 
 ```
 npm install
