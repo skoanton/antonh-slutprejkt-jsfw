@@ -1,4 +1,7 @@
-# Slutprojekt för JSFW
+# Slutprojekt för JSFW av Anton Håkansson
+
+Jag har gjort en book library där man kan söka efter böcker och man kan lägga till böcker i
+sin egna shelf som favorit eller om man har läst den. Man kan även lämna en review.
 
 ## Tekniker använda
 
