@@ -60,7 +60,9 @@ const BookInformation = () => {
           </CardHeader>
           <CardContent className="flex flex-col justify-center items-center gap-1"></CardContent>
           <CardContent>
-            <p className="overflow-scroll">{currentBook.description}</p>
+            <p className="text-ellipsis overflow-x-hidden">
+              {currentBook.description}
+            </p>
           </CardContent>
           <CardContent className="flex gap-2 flex-wrap">
             {currentBook.subject.slice(0, 10).map((genre) => {

@@ -25,7 +25,6 @@ const FavoriteButton = ({ currentBook }: FavoriteButtonProps) => {
           title: "Added to favorites",
           duration: 1000,
         });
-      } else {
       }
     } else {
       shelfDispatch({
