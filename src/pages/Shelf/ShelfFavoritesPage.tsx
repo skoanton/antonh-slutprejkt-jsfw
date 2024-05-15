@@ -1,8 +1,6 @@
 import FavoritedCard from "./components/ShelfCard";
 
-type ShelfFavoritesPageProps = {};
-
-const ShelfFavoritesPage = ({}: ShelfFavoritesPageProps) => {
+const ShelfFavoritesPage = () => {
   return (
     <>
       <FavoritedCard favoritesPage={true} />

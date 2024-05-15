@@ -8,9 +8,7 @@ import { ArrowLeft, BookCheck, Heart } from "lucide-react";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-type TopNavProps = {};
-
-const TopNav = ({}: TopNavProps) => {
+const TopNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (

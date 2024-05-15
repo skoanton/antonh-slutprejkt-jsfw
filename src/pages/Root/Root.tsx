@@ -3,9 +3,7 @@ import Navbar from "./components/Navbar";
 import TopNav from "./components/TopNav";
 import { Toaster } from "@/components/ui/toaster";
 
-type RootProps = {};
-
-const Root = ({}: RootProps) => {
+const Root = () => {
   return (
     <>
       <TopNav />

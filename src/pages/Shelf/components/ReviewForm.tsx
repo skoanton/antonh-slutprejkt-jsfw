@@ -27,8 +27,6 @@ import { z } from "zod";
 import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
 import { useParams } from "react-router-dom";
 
-type ReviewFormProps = {};
-
 const reviewSchema = z.object({
   text: z
     .string()
@@ -41,7 +39,7 @@ const reviewSchema = z.object({
   pages: z.coerce.number().min(1, "Number of pages must be greater then 1"),
 });
 
-const ReviewForm = ({}: ReviewFormProps) => {
+const ReviewForm = () => {
   const { shelfState, shelfDispatch } = useContext(ShelfContext);
 
   const params = useParams<{ bookId: string }>();

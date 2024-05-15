@@ -1,8 +1,6 @@
 import BookInformation from "@/components/ui/BookInformation";
 
-type BookPageProps = {};
-
-const BookPage = ({}: BookPageProps) => {
+const BookPage = () => {
   return (
     <>
       <BookInformation />
