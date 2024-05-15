@@ -33,7 +33,7 @@ export const useBookDataAndDetails = (bookToAdd: TitleSearchResult) :BookDataRes
         author: {
           id: bookToAdd.author_key ?  getId(bookToAdd.author_key[0], "/author/") : "",
           name: bookToAdd.author_name ? bookToAdd.author_name[0] : "No author available",
-          image: "noImage.png",
+          image: "/noImage.png",
         },
         images: getImages(bookToAdd.cover_i),
         description: data.description ? (typeof data?.description === "string" ? data.description : data.description.value): "No description available",

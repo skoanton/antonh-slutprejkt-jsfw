@@ -12,9 +12,9 @@ export const getImages = (bookCoverId:number) : BookImage => {
 
     else {
         return {
-            s: `src/assets/noImage.png`,
-            m: `src/assets/noImage.png`,
-            l: `src/assets/noImage.png`
+            s: `/noImage.png`,
+            m: `/noImage.png`,
+            l: `/noImage.png`
         }
     }
    
