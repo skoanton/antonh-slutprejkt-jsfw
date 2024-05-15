@@ -26,6 +26,7 @@ import { Review } from "@/types/bookType";
 import { z } from "zod";
 import { SHELF_ACTION } from "@/Context/ShelfContext/ShelfReducer";
 import { useParams } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const reviewSchema = z.object({
   text: z
@@ -43,7 +44,7 @@ const ReviewForm = () => {
   const { shelfState, shelfDispatch } = useContext(ShelfContext);
 
   const params = useParams<{ bookId: string }>();
-
+  const { toast } = useToast();
   const currentReview = shelfState.review.find(
     (review) => review.id === params.bookId
   );
@@ -66,10 +67,18 @@ const ReviewForm = () => {
           type: SHELF_ACTION.ADD_REVIEW,
           payload: reviewWithId,
         });
+        toast({
+          title: "Added a review",
+          duration: 1000,
+        });
       } else {
         shelfDispatch({
           type: SHELF_ACTION.UPDATE_REVIEW,
           payload: reviewWithId,
+        });
+        toast({
+          title: "Updated a review",
+          duration: 1000,
         });
       }
     }
@@ -79,7 +88,7 @@ const ReviewForm = () => {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button>Leava a review</Button>
+          <Button>Leave a review</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
