@@ -20,7 +20,7 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
   const { shelfState } = useContext(ShelfContext);
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {favoritesPage ? (
         <>
           {shelfState.favorites.length > 0 ? (
@@ -57,14 +57,14 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
           )}
         </>
       ) : (
-        <>
+        <div className="flex flex-col gap-2">
           {shelfState.readBooks.length > 0 ? (
             <>
-              <h1 className="text-center text-3xl text-primary-foreground p-2">
+              <h1 className="text-center text-xl text-primary-foreground p-2">
                 Pages:{" "}
                 {shelfState.review.reduce((acc, rev) => acc + rev.pages, 0)}
               </h1>
-              <h1 className="text-center text-3xl text-primary-foreground p-2">
+              <h1 className="text-center text-xl text-primary-foreground p-2">
                 Books: {shelfState.readBooks.length}
               </h1>
               {shelfState.readBooks.map((book) => (
@@ -94,9 +94,9 @@ const FavoritedCard = ({ favoritesPage }: FavoritedCardProps) => {
               No books read yet
             </div>
           )}
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
